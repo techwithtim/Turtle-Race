@@ -1,19 +1,18 @@
-
-
 import math
 import random
 import turtle
-import time
+#import time
 
 win_length = 500
 win_height = 500
 
 turtles = 8
 
-turtle.screensize(win_length,win_height)
+turtle.screensize(win_length, win_height)
+
 
 class racer(object):
-    def __init__(self,color, pos):
+    def __init__(self, color, pos):
         self.pos = pos
         self.color = color
         self.turt = turtle.Turtle()
@@ -24,8 +23,8 @@ class racer(object):
         self.turt.setheading(90)
 
     def move(self):
-        r = random.randrange(1,20)
-        self.pos = (self.pos[0],self.pos[1] + r)
+        r = random.randrange(1, 20)
+        self.pos = (self.pos[0], self.pos[1] + r)
         self.turt.pendown()
         self.turt.forward(r)
 
@@ -33,12 +32,12 @@ class racer(object):
         self.turt.penup()
         self.turt.setpos(self.pos)
 
+
 def setupFile(name, colors):
     file = open(name, 'w')
     for color in colors:
         file.write(color + ' 0 \n')
     file.close()
-    
 
 
 def startGame():
@@ -49,14 +48,14 @@ def startGame():
     start = -(win_length/2) + 20
     for t in range(turtles):
         newPosX = start + t*(win_length)//turtles
-        tList.append(racer(colors[t],(newPosX,-230)))
+        tList.append(racer(colors[t],(newPosX, -230)))
         tList[t].turt.showturtle()
-    
+
     run = True
     while run:
         for t in tList:
             t.move()
-            
+
         maxColor = []
         maxDis = 0
         for t in tList:
@@ -95,7 +94,7 @@ def startGame():
 
 
     file.close()
-            
+
 
 start = input('Would you like to play')
 startGame()
