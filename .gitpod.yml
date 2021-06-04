@@ -5,5 +5,3 @@ ports:
     onOpen: ignore
   - port: 6080
     onOpen: open-preview
-tasks:
-    - command: /usr/bin/python3 main.py
